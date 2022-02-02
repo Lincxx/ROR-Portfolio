@@ -12,11 +12,19 @@
   <tbody>
   <% @skills.each.with_index do |skill, index| %>
     <tr>
-      <th scope="row"><%= index %></th>
+      <th scope="row"><%= index + 1 %></th>
       <td><%= skill.name %></td>
       <td><%= skill.description %></td>
       <td>@<%= skill.icon %></td>
+      <td><%= link_to "Edit", edit_skill_path(skill) %></td>
+      <td><%= link_to "Delete", skill, method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<div class="button-group" role="group">
+  <%= link_to "Home", root_path, class: "btn btn-info"%>
+  <%= link_to "New Skill", new_skill_path, class: "btn btn-primary"%>
+
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+</div>
